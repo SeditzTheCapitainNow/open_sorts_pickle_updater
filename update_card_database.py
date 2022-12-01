@@ -4,7 +4,7 @@ import requests
 
 def update_scryfall_json():
         r = requests.get("https://api.scryfall.com/bulk-data/default_cards")
-        jsonPath = '\\\\192.168.1.14\\Projects\\MTGCatagorization\\CardSorter\\default-cards.json'
+        jsonPath = '.\default-cards.json'
         open(jsonPath, 'wb').write(r.content)
         r_json = json.load(open(jsonPath, 'r', encoding='utf8'))
         download_url = r_json['download_uri']
@@ -14,7 +14,7 @@ def update_scryfall_json():
 def create_connection():
     con = None
     try:
-        dbPath = '\\\\192.168.1.14\\Projects\\MTGCatagorization\\CardSorter\\card_db.sqlite'
+        dbPath = '.\card_db.sqlite'
         con = sqlite3.connect(dbPath)
     except sqlite3.Error as error:
         print("Error while connecting to sqlite", error)
@@ -23,7 +23,7 @@ def create_connection():
 
 def create_db(con, cur):
 
-    jsonPath = '\\\\192.168.1.14\\Projects\\MTGCatagorization\\CardSorter\\default-cards.json'
+    jsonPath = '.\default-cards.json'
 
     cards = json.load(open(jsonPath, 'r', encoding='utf8'))
 
@@ -62,7 +62,7 @@ def create_db(con, cur):
 
 
 def update_db(con, cur):
-    jsonPath = '\\\\192.168.1.14\\Projects\\MTGCatagorization\\CardSorter\\default-cards.json'
+    jsonPath = '.\default-cards.json'
 
     cards = json.load(open(jsonPath, 'r', encoding='utf8'))
 
