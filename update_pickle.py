@@ -1,4 +1,3 @@
-import json
 import requests
 import os
 import pickle5 as pickle
