@@ -118,7 +118,7 @@ cursor.execute(table_query)
 if cursor.fetchone()[0]==1:
     print("Updating database...")
     update_db(connection, cursor)
-elif cursor.fetchone()[0]!=1:
+else:
     print("Creating database...")
     create_db(connection, cursor)
 
